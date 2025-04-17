@@ -14,7 +14,7 @@ jobs:
     - uses: actions/setup-python@v5
     - run: pip install -r requirements.txt
     - run: pytest tests/
-    - run: basketball_gm_league_player_file_generator.py
+    - run: python basketball_gm_league_player_file_generator.py
     - run: git config --global user.name "KingKO04"
     - run: git config --global user.email "mancity4everafter@gmail.com"
     - run: git add "Custom Rosters/*"
