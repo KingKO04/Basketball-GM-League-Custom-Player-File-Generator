@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """Basketball GM League Player File Generator.ipynb"""
 
-!pip install gender-guesser
-
 import random
 import json
 import numpy as np
