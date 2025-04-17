@@ -1,4 +1,4 @@
 numpy
-beatifulsoup4
+beautifulsoup4
 requests
 gender-guesser
