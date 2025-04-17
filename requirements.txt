@@ -6,3 +6,4 @@ itertools
 beatifulsoup4
 requests
 gender-guesser
+os
