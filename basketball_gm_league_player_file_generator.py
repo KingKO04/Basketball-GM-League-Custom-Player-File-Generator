@@ -11,6 +11,7 @@ from itertools import chain
 from bs4 import BeautifulSoup
 import requests
 import gender_guesser.detector as gender
+import os
 
 # number of players
 num_players = 609
@@ -827,5 +828,15 @@ data = {
     "startingSeason": startingSeason,
 }
 
-with open("BBGM Random Player File.json", "w", encoding="utf-8") as f:
+# make folder for rosters
+folder = "Custom Rosters"
+os.makedirs(folder, exist_ok=True)
+
+# get existing file numbers
+existing = [int(f.split('.')[0]) for f in os.listdir(folder) if f.endswith('.json') and f.split('.')[0].isdigit()]
+
+next_index = max(existing, default=0) + 1
+filename = os.path.join(folder, f"Custom Roster {next_index}.json")
+
+with open(filename, "w", encoding="utf-8") as f:
     json.dump(data, f, indent=4)
