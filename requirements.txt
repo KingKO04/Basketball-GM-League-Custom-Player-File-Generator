@@ -1,0 +1,8 @@
+random
+json
+numpy
+collections
+itertools
+beatifulsoup4
+requests
+gender-guesser
