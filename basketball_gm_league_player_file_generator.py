@@ -25,8 +25,6 @@ rating_caps = {85: 3, 75: 7, 65: 30, 55: 150, 45: 350}
 
 # information needed for scraping
 headers = {"User-Agent": "Mozilla/5.0"}
-response = requests.get("https://forebears.io/saint-kitts-and-nevis/forenames", headers=headers)
-soup = BeautifulSoup(response.text, 'html.parser')
 
 # locations of birth with frequency
 locations = [
