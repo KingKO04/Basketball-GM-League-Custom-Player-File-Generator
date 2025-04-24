@@ -576,8 +576,17 @@ def assign_age(overall):
       )[0]
 
 def assign_born_loc():
+  """Assign a birth location to a player"""
+    
   countries, odds = zip(*locations)
-  return random.choices(countries, weights=odds, k=1)[0]
+  born_loc = random.choices(countries, weights=odds, k=1)[0]
+  match born_loc:
+    case "Bosnia":
+      return "Bosnia and Herzegovina"
+    case "Czechia":
+      return "Czech Republic"
+    case _:
+      return born_loc
 
 def location_converter(location):
   """Converts a location to a country"""
