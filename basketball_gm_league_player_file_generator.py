@@ -579,14 +579,7 @@ def assign_born_loc():
   """Assign a birth location to a player"""
     
   countries, odds = zip(*locations)
-  born_loc = random.choices(countries, weights=odds, k=1)[0]
-  match born_loc:
-    case "Bosnia":
-      return "Bosnia and Herzegovina"
-    case "Czechia":
-      return "Czech Republic"
-    case _:
-      return born_loc
+  return random.choices(countries, weights=odds, k=1)[0]
 
 def location_converter(location):
   """Converts a location to a country"""
@@ -685,7 +678,11 @@ def store_player(ratings, gameAttributes, pid, players, tags):
             'pid': pid,
             'ratings': [ratings],
             'weight': generate_weight(ratings=ratings)}
-
+  match player['born']['loc']:
+    case "Bosnia":
+      player['born']['loc'] = "Bosnia and Herzegovina"
+    case "Czechia":
+      player['born']['loc'] = "Czech Republic"
   players.append(player)
   tags[pid] = assign_tags(ratings=player['ratings'][0])
   return None
