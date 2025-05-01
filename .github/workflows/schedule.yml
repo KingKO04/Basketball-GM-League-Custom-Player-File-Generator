@@ -14,12 +14,19 @@ jobs:
     - uses: actions/setup-python@v5
     - run: pip install -r requirements.txt
     - run: pytest tests/
+    - run: |
+       git config --global user.name "github-actions[bot]"
+       git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+    - run: |
+       echo "Existing files:"
+       ls -l "Custom Rosters"
+
     - run: python basketball_gm_league_player_file_generator.py
-    - run: git config --global user.name "KingKO04"
-    - run: git config --global user.email "mancity4everafter@gmail.com"
+
     - run: git add "Custom Rosters/*"
     - run: git diff --cached --quiet || git commit -m "Update JSON file"
-    - name: Push changes
+
+    - name: Push changes 
       env:
-       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: git push origin HEAD:main
