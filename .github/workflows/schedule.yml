@@ -11,6 +11,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
     - uses: actions/setup-python@v5
     - run: pip install -r requirements.txt
     - run: pytest tests/
@@ -21,6 +23,9 @@ jobs:
        echo "Existing files:"
        ls -l "Custom Rosters"
 
+    - run: |
+       echo "Checking Custom Rosters before Python script..."
+       ls -l "Custom Rosters"
     - run: python basketball_gm_league_player_file_generator.py
 
     - run: git add "Custom Rosters/*"
