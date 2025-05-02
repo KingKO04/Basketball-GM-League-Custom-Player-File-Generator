@@ -835,7 +835,13 @@ folder = "Custom Rosters"
 os.makedirs(folder, exist_ok=True)
 
 # get existing file numbers
-existing = [int(f.split('.')[0]) for f in os.listdir(folder) if f.endswith('.json') and f.split('.')[0].isdigit()]
+pattern = re.compile(r"Custom Roster (\d+)\.json")
+existing = []
+
+for f in os.listdir(folder):
+    match = pattern.fullmatch(f)
+    if match:
+        existing.append(int(match.group(1)))
 
 next_index = max(existing, default=0) + 1
 filename = os.path.join(folder, f"Custom Roster {next_index}.json")
