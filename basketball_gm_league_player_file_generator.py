@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup
 import requests
 import gender_guesser.detector as gender
 import os
+import re
 
 # number of players
 num_players = 609
